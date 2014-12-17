@@ -1,0 +1,11 @@
+puppet/opt/manifests/vagrant.pp
+.librarian/
+.bundle/
+vendor/
+.vagrant/
+.tmp/
+puppet/opt/hieradata/passwords.yaml
+tmp/
+.DS_Store
+puppet/opt/hieradata/vagrant.yaml
+*.pyc

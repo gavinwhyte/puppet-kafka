@@ -1,10 +1,11 @@
 node 'ssd2sanfran2gig' {
   
+  include zookeeper
   class { 'zookeeper':
         myid  => '1',
         package_url => 'http://apache.mirror.serversaustralia.com.au/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz'
     }
-
+   include kafka
     class { 'kafka':
             broker_id  => '0',
             hostname => $::ipaddress_eth1,
