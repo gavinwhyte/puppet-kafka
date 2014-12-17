@@ -1,5 +1,7 @@
 node 'ssd2sanfran2gig' {
-
+   
+   include java 
+   
   class { 'zookeeper':
         myid  => '1',
         package_url => 'http://apache.mirror.serversaustralia.com.au/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz'
