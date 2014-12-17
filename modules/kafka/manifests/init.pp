@@ -8,7 +8,6 @@ class kafka (
   $statsd_host = $kafka::params::statsd_host,
   $statsd_port = $kafka::params::statsd_port ) inherits kafka::params {
 
-  require java
 
   anchor { 'kafka::begin': } ->
   class { '::kafka::package': } ->

@@ -10,7 +10,7 @@ class zookeeper (
   }
 
    # Java is required to run zoopeer services. AtHis assumes Puppet Java module  is installed.
-  require java
+
 
   group { "${zookeeper::params::group}":
     ensure => present,
