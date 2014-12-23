@@ -33,8 +33,7 @@ class kafka::package inherits kafka {
         }
 
       }
-
-
+      
       ftp, https, http: {
 
           exec { 'download-kafka-package':

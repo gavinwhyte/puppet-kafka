@@ -6,3 +6,5 @@
 forge "https://forgeapi.puppetlabs.com"
 
 mod "puppetlabs-java"
+
+mod "puppetlabs-stdlib"

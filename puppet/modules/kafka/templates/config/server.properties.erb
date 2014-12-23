@@ -13,6 +13,7 @@ port=9092
 # Hostname the broker will bind to and advertise to producers and consumers.
 # If not set, the server will bind to all interfaces and advertise the value returned from
 # from java.net.InetAddress.getCanonicalHostName().
+
 <% unless @hostname.nil? || @hostname.empty? %>
 advertised.host.name=<%= @hostname %>
 host.name=<%= @hostname %>
@@ -37,7 +38,7 @@ socket.request.max.bytes=104857600
 ############################# Log Basics #############################
 
 # A comma seperated list of directories under which to store log files
-log.dirs=/tmp/kafka-logs
+log.dirs=/var/log/kafka-logs
 
 # The number of logical partitions per topic per server. More partitions allow greater parallelism
 # for consumption, but also mean more files.
@@ -96,14 +97,14 @@ zookeeper.connect=<%= @zookeeper_connect %>
 # Timeout in ms for connecting to zookeeper
 zookeeper.connection.timeout.ms=1000000
 
-<% unless @statsd_port.nil? %>
+# <% unless @statsd_port.nil? %>
 ############################# kafka-statsd-reporter #############################
 # https://github.com/myfitnesspal/kafka-statsd-reporter
 # don't forget to build the kafka-statsd-1.0.0.jar jar and add it to the libs/
 #################################################################################
-kafka.metrics.reporters=com.myfitnesspal.kafka.KafkaStatsdMetricsReporter
-kafka.statsd.metrics.reporter.enabled=true
-kafka.statsd.metrics.host=<%= @statsd_host %>
-kafka.statsd.metrics.port=<%= @statsd_port %>
-kafka.statsd.metrics.group=kafka
-<% end %>
+# kafka.metrics.reporters=com.myfitnesspal.kafka.KafkaStatsdMetricsReporter
+# kafka.statsd.metrics.reporter.enabled=true
+# kafka.statsd.metrics.host=<%= @statsd_host %>
+# kafka.statsd.metrics.port=<%= @statsd_port %>
+# kafka.statsd.metrics.group=kafka
+# <% end %>
