@@ -1,10 +1,11 @@
 ---
 :backends:
   - yaml
+
 :yaml:
   :datadir: /puppet/hieradata
+
 :hierarchy:
-  - "node/%{::fqdn}"
   - common
 
 
