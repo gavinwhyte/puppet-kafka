@@ -14,8 +14,8 @@ class zookeeper::params {
      $extracted_Zbroker_id  = $extractedValueZHostName[1]
    }
   end 
-
-
+ 
+  $package_url = 'http://apache.mirror.serversaustralia.com.au/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz'
   $myid        = $extracted_Zbroker_id
   $datastore   = hiera('zookeeper:datastore', '/var/zookeeper')
   $package_dir = '/var/lib/zookeeper'

@@ -2,7 +2,7 @@ class zookeeper (
   $myid = $zookeeper::params::myid,
   $servers = $zookeeper::params::servers,
   $package_dir = $zookeeper::params::package_dir,
-  $package_url = undef ) inherits zookeeper::params {
+  $package_url = $zookeeper::params::package_url ) inherits zookeeper::params {
 
   class { 'zookeeper::package':
     package_dir => $package_dir,

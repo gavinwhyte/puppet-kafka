@@ -22,7 +22,7 @@ class kafka::params {
   $broker_id  = $extracted_broker_id
   $datastore   = hiera('kafka:datastore', '/var/kafka')
   $package_dir = hiera('kafka:package_dir', '/var/lib/kafka')
-  $package_url = hiera('kafka:package_url', undef)
+  $package_url = 'http://mirror.symnds.com/software/Apache/kafka/0.8.1.1/kafka_2.10-0.8.1.1.tgz'
   $install_dir = hiera('kafka:install_dir', '/usr/local/kafka')
   $hostname    = $extracted_host_name
   $hostname_port = '2181'
