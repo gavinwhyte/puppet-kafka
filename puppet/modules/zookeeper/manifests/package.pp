@@ -1,5 +1,5 @@
-class zookeeper::package($package_dir, $package_url) {
-
+class zookeeper::package($package_dir, $package_url) inherits zookeeper {
+  
   if ($package_url != undef) {
 
     exec { 'create-zk-packagedir':
