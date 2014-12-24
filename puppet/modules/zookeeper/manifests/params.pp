@@ -1,6 +1,22 @@
 class zookeeper::params {
 
-  $myid        = hiera('zookeeper:myid', '1')
+  $myArrayZookeeper = hiera('kz_hostname_id')
+  
+  if $myArrayZookeeper.length < 1
+     raise Puppet::ParseError, ("There must be at least one Zookeeper server in hiera.yaml file")
+  end   
+
+  myArrayZookeeper.each do |value|
+  $extractedValueZHostName = split(value, ':')
+  # have to ensure the host we are installing on is correct.
+   if $extractedValueZHostName[0] = $::ipaddress {
+     $extracted_Zhost_name  = $extractedValueZHostName[0]
+     $extracted_Zbroker_id  = $extractedValueZHostName[1]
+   }
+  end 
+
+
+  $myid        = $extracted_Zbroker_id
   $datastore   = hiera('zookeeper:datastore', '/var/zookeeper')
   $package_dir = '/var/lib/zookeeper'
   $client_port = hiera('client_port', 2181)
@@ -19,7 +35,7 @@ class zookeeper::params {
   $lo4j_prop   = hiera('log4j_prop', 'INFO,ROLLINGFILE')
 
 
-  $servers     = hiera_array('zookeeper:servers', [])
+  $servers     = $extracted_Zhost_name
 
   $snapRetainCount = hiera('zookeeper:snapRetainCount', 3)
   # interval in hours, purging enabled when >= 1
