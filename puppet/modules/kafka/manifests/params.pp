@@ -1,8 +1,9 @@
 class kafka::params {
   
 
-  $myArrayKafka = hiera('k_hostname_broker_id')
-  
+#  $myArrayKafka = hiera('k_hostname_broker_id')
+  $myArrayKafka = [104.236.176.134:0]
+
   if $myArrayKafka.length < 1
      raise Puppet::ParseError, ("There must be at least one kafka broker in hiera.yaml file")
   end   
