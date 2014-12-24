@@ -7,16 +7,14 @@ class zookeeper::params {
 
       $extractedValueZHostName = split($name, ':')
     if $extractedValueZHostName[0] == $::ipaddress {
-    
+
       $extracted_Zhost_name  = $extractedValueZHostName[0]
       $extracted_Zbroker_id  = $extractedValueZHostName[1]
 
-
-     
-      $package_url = 'http://apache.mirror.serversaustralia.com.au/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz'
       $myid        = $extracted_Zbroker_id
       $datastore   = hiera('zookeeper:datastore', '/var/zookeeper')
       $package_dir = '/var/lib/zookeeper'
+      $package_url = 'http://apache.mirror.serversaustralia.com.au/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz'
       $client_port = hiera('client_port', 2181)
       $snap_count  = hiera('snap_count', 10000)
       $log_dir     = hiera('log_dir', '/var/log/zookeeper')
