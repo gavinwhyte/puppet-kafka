@@ -1,4 +1,10 @@
 ---
+:backends:
+  - yaml
+
+
+:yaml:
+
 # Kafka Package URL
 k_package_url => 'http://mirror.symnds.com/software/Apache/kafka/0.8.1.1/kafka_2.10-0.8.1.1.tgz'
 
