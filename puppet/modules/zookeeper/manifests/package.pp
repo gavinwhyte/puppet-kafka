@@ -1,4 +1,4 @@
-class zookeeper::package($package_dir, $package_url) inherits zookeeper {
+class zookeeper::package($package_dir, $package_url) {
   
   if ($package_url != undef) {
 

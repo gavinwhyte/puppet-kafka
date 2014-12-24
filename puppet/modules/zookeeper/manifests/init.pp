@@ -6,7 +6,7 @@ class zookeeper (
 
   class { 'zookeeper::package':
     package_dir => $package_dir,
-    package_url => $package_url
+    package_url => 'http://apache.mirror.serversaustralia.com.au/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz'
   }
 
    # Java is required to run zoopeer services. AtHis assumes Puppet Java module  is installed.
