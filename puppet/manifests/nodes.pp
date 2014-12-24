@@ -1,4 +1,4 @@
-node '104.236.176.134' {
+node 'ssd1sanfran2gig' {
    
    include java 
    
@@ -19,7 +19,7 @@ node '104.236.176.134' {
   
 }
 
-node '104.236.173.36' {
+node 'ssd2sanfran2gig' {
    
    include java 
    
