@@ -1,0 +1,23 @@
+# Kafka Package URL
+k_package_url => 'http://mirror.symnds.com/software/Apache/kafka/0.8.1.1/kafka_2.10-0.8.1.1.tgz'
+
+# Kafka server
+# Kafka unique refrence number.
+# The following represents a hostname and broker id 
+# Add the host name and broker ID below. 
+
+k_hostname_broker_id: 
+ - "104.236.176.134:0"
+# - "hostname:2"
+# - "hostname:3"
+
+# Kafka Zookeeper package url 
+kz_package_url => 'http://apache.mirror.serversaustralia.com.au/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz'
+
+#kafka zookeeper server 1 and id to represent each unique server.
+# Note zookeeper must consist of a quorum of servers. 
+
+kz_hostname_id: 
+ - "104.236.173.36:1"
+# kz_myid_1  => ''
+# k_zookeeper_connect_1 => 'zookeeper_hostname',
