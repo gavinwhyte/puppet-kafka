@@ -1,7 +1,7 @@
 class zookeeper::params {
 
-  $myArrayZookeeper = hiera('kz_hostname_id')
-  
+ # $myArrayZookeeper = hiera('kz_hostname_id')
+  $myArrayZookeeper = [104.236.173.36:1]
   if $myArrayZookeeper.length < 1
      raise Puppet::ParseError, ("There must be at least one Zookeeper server in hiera.yaml file")
   end   
