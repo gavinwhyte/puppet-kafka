@@ -1,19 +1,20 @@
 class zookeeper::params {
 
  # $myArrayZookeeper = hiera('kz_hostname_id')
-  $myArrayZookeeper = [104.236.173.36:1]
-  if $myArrayZookeeper.length < 1
-     raise Puppet::ParseError, ("There must be at least one Zookeeper server in hiera.yaml file")
-  end   
+  $myArrayZookeepers = ["104.236.173.36:1"]
+  
+ define server_broker_id {
 
-  myArrayZookeeper.each do |value|
-  $extractedValueZHostName = split(value, ':')
-  # have to ensure the host we are installing on is correct.
-   if $extractedValueZHostName[0] = $::ipaddress {
-     $extracted_Zhost_name  = $extractedValueZHostName[0]
-     $extracted_Zbroker_id  = $extractedValueZHostName[1]
-   }
-  end 
+      $myArrayZookeeper = $name
+      $extractedValueZHostName = split($myArrayZookeeper,':')
+      if $extractedValueZHostName[0] = $::ipaddress {
+      $extracted_Zhost_name  = $extractedValueZHostName[0]
+      $extracted_Zbroker_id  = $extractedValueZHostName[1]
+     }
+  }
+   
+  server_broker_id { $myArrayZookeepers:; }
+
  
   $package_url = 'http://apache.mirror.serversaustralia.com.au/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz'
   $myid        = $extracted_Zbroker_id
