@@ -73,7 +73,7 @@ class zookeeper (
 
   file { "${zookeeper::params::install_dir}/${zookeeper::package::basename}":
     ensure => "directory",
-    mode => 0644,
+    mode => '0644',
     owner => "${zookeeper::params::user}",
     group => "${zookeeper::params::group}",
     alias => "zookeeper-app-dir",

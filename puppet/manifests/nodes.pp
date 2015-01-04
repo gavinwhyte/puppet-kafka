@@ -2,6 +2,12 @@ node default {
 }
 
 
+node 'ssd1sanfran2gig' {
+   
+   include java 
+   include kafka
+}
+
 node 'ssd2sanfran2gig' {
    
    include java 
@@ -9,8 +15,4 @@ node 'ssd2sanfran2gig' {
   
 }
 
-node 'ssd1sanfran2gig' {
-   
-   include java 
-   include kafka
-}
+

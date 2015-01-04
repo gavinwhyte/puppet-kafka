@@ -1,6 +1,5 @@
 class zookeeper::package($package_dir, $package_url) {
   
-  $package_url = 'http://apache.mirror.serversaustralia.com.au/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz'
   if ($package_url != undef) {
 
     exec { 'create-zk-packagedir':
