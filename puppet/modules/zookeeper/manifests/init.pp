@@ -43,14 +43,14 @@ class zookeeper (
 
   file {"${zookeeper::params::install_dir}":
     ensure => "directory",
-    mode => 0644,
+    mode => 0755,
     owner => "${zookeeper::params::user}",
     group => "${zookeeper::params::group}",
     alias => "zookeeper-install-dir",
   }
 
   file { "${zookeeper::params::install_dir}/${zookeeper::package::basefilename}":
-    mode => 0644,
+    mode => 0755,
     owner => "${zookeeper::params::user}",
     group => "${zookeeper::params::group}",
     source => "file://${package_dir}/${zookeeper::package::basefilename}",
@@ -73,7 +73,7 @@ class zookeeper (
 
   file { "${zookeeper::params::install_dir}/${zookeeper::package::basename}":
     ensure => "directory",
-    mode => 0644,
+    mode => 0755,
     owner => "${zookeeper::params::user}",
     group => "${zookeeper::params::group}",
     alias => "zookeeper-app-dir",
@@ -94,6 +94,7 @@ class zookeeper (
     ensure => "directory",
     owner => "${zookeeper::params::user}",
     group => "${zookeeper::params::group}",
+    mode => 0755
     alias => "zookeeper-cfg",
     require => [File["zookeeper-symlink"]],
     before => [ File["zoo-cfg"] ]
@@ -135,7 +136,7 @@ class zookeeper (
 
   file { "/etc/init/zookeeper.conf":
     content => template("zookeeper/init/zookeeper.conf"),
-    mode => 0644,
+    mode => 0755,
     alias => 'zookeeper-init',
     require => [File["zookeeper-myid"], File["zookeeper-environment"], File["zookeeper-envsh"]],
   }
