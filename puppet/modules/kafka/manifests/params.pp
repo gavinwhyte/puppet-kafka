@@ -2,8 +2,8 @@ class kafka::params {
   
 
 #  $myArrayKafka = hiera('k_hostname_broker_id')
-  $myArrayKafka = ['104.236.175.36:0']
-
+  $myArrayKafka = ['104.236.173.36:0']
+ 
   if $myArrayKafka.length < 1
      raise Puppet::ParseError, ("There must be at least one kafka broker in hiera.yaml file")
   end   
@@ -20,6 +20,10 @@ class kafka::params {
    }
   end 
   
+ # Only Install if the ipaddress match
+  
+ if $extractedValueHostName[0] = $::ipaddress {
+
   $broker_id  = $extracted_broker_id
   $datastore   = hiera('kafka:datastore', '/var/kafka')
   $package_dir = hiera('kafka:package_dir', '/var/lib/kafka')
@@ -49,4 +53,7 @@ class kafka::params {
   end 
 
   $zookeeper_connect = $coll_zookeeper
+
+ }
+
 }

@@ -1,4 +1,5 @@
 class kafka (
+  
   $broker_id,
   $hostname = $kafka::params::hostname,
   $zookeeper_connect = $kafka::params::zookeeper_connect,
