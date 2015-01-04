@@ -1,6 +1,6 @@
 class kafka (
   
-  $broker_id,
+  $broker_id = $kafka::params::broker_id,
   $hostname = $kafka::params::hostname,
   $zookeeper_connect = $kafka::params::zookeeper_connect,
   $package_dir = $kafka::params::package_dir,

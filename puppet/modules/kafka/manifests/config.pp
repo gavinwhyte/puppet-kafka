@@ -5,7 +5,7 @@ class kafka::config inherits kafka {
   file { $conf_file:
     owner => 'kafka',
     group => 'kafka',
-    mode => "644",
+    mode =>  0644,
     alias => "kafka-cfg",
     require => File["kafka-app-dir"],
     content => template("kafka/config/server.properties.erb"),
