@@ -32,7 +32,7 @@ class kafka::params {
   
  
 
- if $extractedValueHostName[0] = $::ipaddress {
+ if $extractedValueHostName[0] == $::ipaddress {
 
   $broker_id  = $extractedValueHostName[1]
   $datastore   = hiera('kafka:datastore', '/var/kafka')
