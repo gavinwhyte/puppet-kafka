@@ -111,7 +111,7 @@ class zookeeper (
   file { "${zookeeper::params::datastore}/myid":
     owner => "${zookeeper::params::user}",
     group => "${zookeeper::params::group}",
-    mode => "644",
+    mode =>  0644,
     content => $myid,
     require => File["zookeeper-datastore"],
     alias => "zookeeper-myid",
