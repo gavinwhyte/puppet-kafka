@@ -10,7 +10,8 @@ class zookeeper (
   }
 
    # Java is required to run zoopeer services. AtHis assumes Puppet Java module  is installed.
-   include java
+   
+   require java
 
   group { "${zookeeper::params::group}":
     ensure => present,
@@ -94,7 +95,7 @@ class zookeeper (
     ensure => "directory",
     owner => "${zookeeper::params::user}",
     group => "${zookeeper::params::group}",
-    mode => 0755
+    mode => 0755,
     alias => "zookeeper-cfg",
     require => [File["zookeeper-symlink"]],
     before => [ File["zoo-cfg"] ]
