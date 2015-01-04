@@ -15,7 +15,7 @@ class zookeeper::params {
       $myid        = $extracted_Zbroker_id
       $datastore   = hiera('zookeeper:datastore', '/var/zookeeper')
       $package_dir = '/var/lib/zookeeper'
-      $package_url = 'http://mirrors.ukfast.co.uk/sites/ftp.apache.org/zookeeper/zookeeper-3.4.5/zookeeper-3.4.5.tar.gz'
+      $package_url = 'http://apache.mirror.digitalpacific.com.au/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz'
       $client_port = hiera('client_port', 2181)
       $snap_count  = hiera('snap_count', 10000)
       $log_dir     = hiera('log_dir', '/var/log/zookeeper')
