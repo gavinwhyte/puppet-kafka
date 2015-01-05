@@ -5,17 +5,17 @@ class zookeeper::params {
  # Note Zookeeper broker ID starts with 1
  #define server_broker_id {
 
-      $extractedValueZHostName = split("104.236.176.134:1", ':')
+    #  $extractedValueZHostName = split("104.236.176.134:1", ':')
 
-    if $extractedValueZHostName[0] == $::ipaddress {
+    #if $extractedValueZHostName[0] == $::ipaddress {
 
-      $extracted_Zhost_name  = $extractedValueZHostName[0]
-      $extracted_Zbroker_id  = $extractedValueZHostName[1]
+     # $extracted_Zhost_name  = $extractedValueZHostName[0]
+     # $extracted_Zbroker_id  = $extractedValueZHostName[1]
 
-      $myid        = $extracted_Zbroker_id
+      $myid        = hiera('zookeeper:myid', undef)
       $datastore   = hiera('zookeeper:datastore', '/var/zookeeper')
       $package_dir = '/var/lib/zookeeper'
-      $package_url = 'http://www.us.apache.org/dist/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz'
+      $package_url = 'http://s025w12l4548.s4.chp.cba/assets/kafka/zookeeper-3.4.6.tar.gz'
       $client_port = hiera('client_port', 2181)
       $snap_count  = hiera('snap_count', 10000)
       $log_dir     = hiera('log_dir', '/var/log/zookeeper')
@@ -32,7 +32,7 @@ class zookeeper::params {
       $lo4j_prop   = hiera('log4j_prop', 'INFO,ROLLINGFILE')
 
 
-      $servers     = $extracted_Zhost_name
+      $servers     = $::ipaddress
 
       $snapRetainCount = hiera('zookeeper:snapRetainCount', 3)
       # interval in hours, purging enabled when >= 1
@@ -42,7 +42,7 @@ class zookeeper::params {
       $rollingfile_threshold = hiera('rollingfile_threshold', 'ERROR')
       $tracefile_threshold    = hiera('tracefile_threshold', 'TRACE')
 
-    }
+   # }
   #}
    
   #server_broker_id { $myArrayZookeepers:; }

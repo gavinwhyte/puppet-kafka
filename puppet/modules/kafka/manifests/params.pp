@@ -23,23 +23,23 @@ class kafka::params {
 
   # read the collection of zookeeper server and assign to $coll_zookeeper
 
-  $extractedValueZHostName = split("104.236.176.134:1", ':')
-  $coll_zookeeper = $extractedValueZHostName[0]
+  #$extractedValueZHostName = split("104.236.176.134:1", ':')
+  #$coll_zookeeper = $extractedValueZHostName[0]
  
   # todo read and apply the correct broker id and ip address
 
-  $extractedValueHostName = split("104.236.173.36:1", ':')
+  #$extractedValueHostName = split("104.236.173.36:1", ':')
   
  
 
- if $extractedValueHostName[0] == $::ipaddress {
+ # if $extractedValueHostName[0] == $::ipaddress {
 
-  $broker_id  = $extractedValueHostName[1]
+  #$broker_id  = $extractedValueHostName[1]
   $datastore   = hiera('kafka:datastore', '/var/kafka')
   $package_dir = hiera('kafka:package_dir', '/var/lib/kafka')
-  $package_url = 'http://mirror.symnds.com/software/Apache/kafka/0.8.1.1/kafka_2.10-0.8.1.1.tgz'
+  $package_url = 'http://s025w12l4548.s4.chp.cba/assets/kafka/kafka_2.10-0.8.1.1.tgz'
   $install_dir = hiera('kafka:install_dir', '/usr/local/kafka')
-  $hostname    = $extractedValueHostName[0]
+  $hostname    = $::ipaddress
   $hostname_port = '2181'
   $statsd_host = hiera('kafka:statsd_host', $::statsd_host)
   $statsd_port = hiera('kafka:statsd_port', $::statsd_port)
@@ -63,7 +63,7 @@ class kafka::params {
   # end 
   # Read an array of zookeeper servers 
 
-  $zookeeper_connect = $coll_zookeeper
+  $zookeeper_connect = hiera('kafka:zookeeper_connect', undef)
 
  }
 
