@@ -53,6 +53,7 @@ class kafka::package inherits kafka {
         $source_path = $sourceArray[1]
         file { "${package_dir}/${basefilename}":
           ensure  => present,
+          mode => 0755,
           source  => $source_path,
           require => File[$package_dir],
           backup  => false
