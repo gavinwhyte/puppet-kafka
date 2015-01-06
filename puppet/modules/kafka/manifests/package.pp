@@ -11,6 +11,7 @@ class kafka::package inherits kafka {
 
     file { $package_dir:
       ensure  => 'directory',
+      mode => 0755,
       require => Exec['create-kafka-packagedir'],
     }
 
@@ -53,7 +54,7 @@ class kafka::package inherits kafka {
         $source_path = $sourceArray[1]
         file { "${package_dir}/${basefilename}":
           ensure  => present,
-          mode => 0755,
+          mode => 0777,
           source  => $source_path,
           require => File[$package_dir],
           backup  => false

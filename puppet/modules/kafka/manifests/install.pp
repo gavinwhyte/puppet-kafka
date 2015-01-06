@@ -32,7 +32,7 @@ class kafka::install inherits kafka {
 
   file { "${install_dir}/${kafka::package::basename}":
     ensure => "directory",
-    mode => 0755,
+    mode => 0777,
     owner => "kafka",
     group => "kafka",
     alias => "kafka-app-dir",
@@ -41,7 +41,7 @@ class kafka::install inherits kafka {
 
   file { "${install_dir}/kafka":
     force => true,
-    mode => 0755,
+    mode => 0777,
     ensure => "${install_dir}/${kafka::package::basename}",
     alias => "kafka-symlink",
     owner => "kafka",
