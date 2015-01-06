@@ -67,4 +67,4 @@ class kafka::params {
 
  }
 
-}
+

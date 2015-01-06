@@ -18,20 +18,31 @@ bundle exec librarian-puppet update
 ### Currently testing on 2 machines 
 
 # --------------------------------
+Running Puppet 
 
-ssd1sanfran2gig
+Run puppet in sudo mode 
 
-ip address 104.236.173.36
+sudo bash/runpuppet 
 
-Kafka 
+take note of the changes that were made 
 
-# -------------------------------
+in /usr/local/bin/puppet apply \
+  --environment dev \
+  --verbose \
+  --debug \
+  --modulepath=puppet/modules:puppet/external-modules \
+  puppet/manifests/nodes.pp
 
-ssd2sanfran2gig
+  I added /usr/local/bin to puppet apply 
 
-ipaddress 104.236.176.134
+  when running puppet in sudo mode, and if you query "which puppet"
 
-Zookeeper
+  it refers to /usr/local/bin, its not in the path.
+
+  hence 
+
+  /usr/local/bin/puppet apply ....
+
 
 # -------------------------------
 
@@ -41,13 +52,13 @@ bin/kafka-topics.sh --create --zookeeper 104.236.176.134:2181 --replication-fact
 
 
 We can now see that topic if we run the list topic command:
-> bin/kafka-topics.sh --list --zookeeper 104.236.176.134:2181
+> bin/kafka-topics.sh --list --zookeeper ipaddress(of zookeeper)
 
 Run the producer and then type a few messages into the console to send to the server.
 
-> bin/kafka-console-producer.sh --broker-list 104.236.173.36:9092 --topic test
+> bin/kafka-console-producer.sh --broker-list ipaddress(kafka):9092 --topic test
 
 Kafka also has a command line consumer that will dump out messages to standard output.
-> bin/kafka-console-consumer.sh --zookeeper 104.236.176.134:2181 --topic test --from-beginning
+> bin/kafka-console-consumer.sh --zookeeper ipaddress(kafka):2181 --topic test --from-beginning
 
 
