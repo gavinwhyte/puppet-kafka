@@ -1,6 +1,6 @@
 Ip Addresses - ODP Servers
 
-10.39.3.112  s025wrtl2299.s4.chp.cba  Kafka1 
+10.39.3.112  s025wrtl4987.s4.chp.cba  Kafka1 
 
 10.39.3.103  s025wrtl6208.s4.chp.cba  kafka2
 
